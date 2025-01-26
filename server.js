@@ -5,9 +5,13 @@ const sequelize = require('./db'); // Import the sequelize instance
 const User = require('./models/User'); // Import the User model
 const Product = require('./models/Product'); // Import the Product model
 const Cart = require('./models/Cart'); // Import the Cart model
+const { swaggerUi, specs } = require('./swagger');
 
 // Middleware
 app.use(express.json());
+// Swagger setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 
 // Import routes
 const authRoutes = require('./routes/auth');
